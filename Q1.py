@@ -17,7 +17,7 @@ import sys
 
 def getMaxAggregateTemperatureChange(tempChange):
         # Write your code here
-        ########################
+ ###########################################################
         value=tempChange[0]
     for i in range(len(tempChange)):
         value=max(max(sum(tempChange[:i+1]),sum(tempChange[i:])),value)
