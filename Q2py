@@ -1,0 +1,60 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+#
+# Complete the 'minimumGroups' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER_ARRAY awards
+#  2. INTEGER k
+#
+
+def minimumGroups(awards, k):
+    # Write your code here
+    ########################################
+    awards.sort()
+    temp=[]
+    arr=[]
+    temp.append(awards[0])
+    j=0
+    for i in range(1,len(awards)):
+        ##print(awards[i])
+        if((awards[i]-min(temp))<k):
+            temp.append(awards[i])
+        else:
+            arr.append(temp)
+            temp=[]
+            temp.append(awards[i])
+
+    arr.append(temp)       
+    return(len(arr)) 
+    
+    #########################  
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    awards_count = int(input().strip())
+
+    awards = []
+
+    for _ in range(awards_count):
+        awards_item = int(input().strip())
+        awards.append(awards_item)
+
+    k = int(input().strip())
+
+    result = minimumGroups(awards, k)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close())
